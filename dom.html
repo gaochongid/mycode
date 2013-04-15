@@ -9,6 +9,17 @@
     <div id="t1" style="background-color: red; height:20px;"></div>
     <script type="text/javascript">
 
+        /**
+        var divs1 = document.getElementsByTagName('div')
+        , divs2 = document.querySelectorAll('div');
+
+        console.log(divs1 instanceof NodeList); true
+        console.log(divs2 instanceof NodeList); true
+        */
+        
+        /**
+          * getElementsByTagName 返回的是引用NodeList
+          * querySelectorAll 返回的是具体值NodeList
 
         var divs = document.getElementsByTagName('div')
         , divs2 = document.querySelectorAll('div');
@@ -25,7 +36,7 @@
 
         console.log(divs); // [div#t1, item: function]
         console.log(divs2); // [div#t, div#t1, item: function]
-
+        */
 
         /**
         var t = document.getElementById('t')
