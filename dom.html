@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>test dom</title>
+</head>
+<body>
+    <div id="t" style="background-color: red; height:20px;"></div>
+    <div id="t1" style="background-color: red; height:20px;"></div>
+    <script type="text/javascript">
+
+
+        var divs = document.getElementsByTagName('div')
+        , divs2 = document.querySelectorAll('div');
+
+        console.log(divs.length); // 2
+        console.log(divs2.length); // 2
+
+        console.log(divs); // [div#t, div#t1, item: function]
+        console.log(divs2); // [div#t, div#t1, item: function]
+        document.body.removeChild(document.querySelector('#t'));
+    
+        console.log(divs.length); // 1
+        console.log(divs2.length); // 2
+
+        console.log(divs); // [div#t1, item: function]
+        console.log(divs2); // [div#t, div#t1, item: function]
+
+
+        /**
+        var t = document.getElementById('t')
+        , tq = document.querySelector('#t');
+
+        t.setAttribute('a', 1);
+
+        console.log(tq); // has a
+        console.log(t); // has a
+        */
+    </script>
+</body>
+</html>
