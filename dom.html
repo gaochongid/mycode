@@ -5,9 +5,70 @@
     <title>test dom</title>
 </head>
 <body>
-    <div id="t" style="background-color: red; height:20px;"></div>
+    <div id="t" style="background-color: red; height:20px;">                </div>
     <div id="t1" style="background-color: red; height:20px;"></div>
+	<div id="div1">
+		<h3>this is h3 element</h3>
+		<p id="p1" class="class1 class2" i="2432432432">
+			this is p element
+			<strong>this is strong</strong>
+		</p>
+		<div id="di2">this is div2</div>
+	</div>
     <script type="text/javascript">
+	
+		var divs1 = document.getElementById('div1');
+		console.log(divs1.childNodes.length);
+		divs1.normalize();
+		console.log(divs1.childNodes.length);
+	
+		/**
+		var divs1 = document.getElementById('div1')
+		, h3 = div1.getElementsByTagName('h3')[0];
+		h3.onclick = function () {
+			alert('ok');
+		};
+		
+		divs1.appendChild( h3.cloneNode(true) );
+		*/
+	
+		/**
+		var divs1 = document.querySelector('#div1')
+		, h3 = divs1.querySelector('h3');
+		divs1.replaceChild( document.querySelector('#di2'), h3 );
+		*/
+		
+		/**
+		var divs1 = document.querySelector('#div1')
+		, h3 = divs1.querySelector('h3')
+		, newP = document.createElement('p');
+		newP.innerHTML = 'this is new p element';
+		
+		divs1.insertBefore( newP, h3 );
+		*/
+		
+		/**
+		var divs1 = document.querySelector('#div1');
+		divs1.appendChild( divs1.querySelector('h3') );
+		*/
+		
+		
+		/**
+		var t = document.querySelector('#t');
+		console.log(t.nextSibling);
+		console.log(t.hasChildNodes());
+		*/
+		
+		/**
+		* IE9+, !IE
+		var divs1 = document.querySelector('#div1').childNodes;
+		
+		function converToArray( list ) {
+			return Array.prototype.slice.call(list);
+		}
+		
+		console.log( converToArray(divs1) );
+		*/
 
         /**
         var divs1 = document.getElementsByTagName('div')
