@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>test dom api</title>
+	</head>
+	<body>
+		<div id="div1">
+			<h3>this is h3 element</h3>
+			<p id="p1" class="class1 class2" i="2432432432">
+				this is p element
+				<strong>this is strong</strong>
+			</p>
+			<div id="di2">this is div2</div>
+		</div>
+		
+		<script type="text/javascript">
+			var p1 = document.querySelector('#p1');
+			console.log('nodeName', p1.nodeName);
+			console.log('nodeValue', p1.nodeValue);
+			console.log('nodeType', p1.nodeType);
+			
+			console.log('parentNode', p1.parentNode);
+			console.log('childNodes', p1.childNodes);
+			console.log('firstChild', p1.firstChild);
+			console.log('lastChild', p1.lastChild);
+			console.log('previousSibling', p1.previousSibling);
+			console.log('nextSibling', p1.nextSibling);
+			console.log('attributes', p1.attributes);
+			console.log('ownerDocument', p1.ownerDocument);
+			
+			// 刚刚创建的node
+			// console.log( p1.insertBefore(document.createTextNode('<strong>test</strong>'), p1.firstChild) );
+			
+			// replace掉的node
+			// console.log( p1.replaceChild( document.createTextNode('replace'), p1.lastChild ) );
+			
+			// remove掉的node
+			console.log( p1.removeChild(p1.lastChild) );
+		</script>
+	</body>
+</html>
