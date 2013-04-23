@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>test dom</title>
+    <style type="text/css">
+        .bg {
+            background-color: red;
+        }
+    </style>
 </head>
 <body>
     <div id="t" style="background-color: red; height:20px;">                </div>
@@ -15,6 +20,7 @@
 		</p>
 		<div id="di2">this is div2</div>
 	</div>
+    <div id="myDiv" align="right" myAttr="hello" style="color:red;" onclick="todo()">this is div</div>
 	<img src="http://www.baidu.com/img/420b_ead78e6081de7939cdf8eff9e608617f.gif" alt=""/>
 	<img src="http://www.baidu.com/img/420b_ead78e6081de7939cdf8eff9e608617f.gif" alt=""/>
 	<img src="http://www.baidu.com/img/420b_ead78e6081de7939cdf8eff9e608617f.gif" alt=""/>
@@ -26,6 +32,25 @@
 		console.log( 'DOM1.0: ', document.implementation.hasFeature('Core', '1.0') );
 		console.log( 'DOM2.0: ', document.implementation.hasFeature('Core', '2.0') );
 		console.log( 'DOM3.0: ', document.implementation.hasFeature('Core', '3.0') );
+
+        var myDiv = document.getElementById('myDiv');
+        console.log(myDiv.attributes);
+
+        /**
+        var di2 = document.getElementById('di2');
+        di2.setAttribute('class', 'bg');
+        di2.setAttribute('style', 'color:yellow');
+        */
+
+        /**
+        var myDiv = document.getElementById('myDiv');
+        console.log( myDiv.id );
+        console.log( myDiv.align );
+        console.log( myDiv.myAttr );
+        console.log('-------------------');
+        console.log( myDiv.getAttribute('style') );
+        console.log( myDiv.getAttribute('onclick') );
+        */
 
         /**
           * HTMLCollection
