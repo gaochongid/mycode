@@ -15,8 +15,39 @@
 		</p>
 		<div id="di2">this is div2</div>
 	</div>
+	<img src="http://www.baidu.com/img/420b_ead78e6081de7939cdf8eff9e608617f.gif" alt=""/>
+	<img src="http://www.baidu.com/img/420b_ead78e6081de7939cdf8eff9e608617f.gif" alt=""/>
+	<img src="http://www.baidu.com/img/420b_ead78e6081de7939cdf8eff9e608617f.gif" alt=""/>
+	<img src="http://www.baidu.com/img/420b_ead78e6081de7939cdf8eff9e608617f.gif" alt=""/>
+	<img src="http://www.baidu.com/img/420b_ead78e6081de7939cdf8eff9e608617f.gif" alt=""/>
+	<img src="http://www.baidu.com/img/420b_ead78e6081de7939cdf8eff9e608617f.gif" name="ttt" alt=""/>
+	
     <script type="text/javascript">
+		console.log( 'DOM1.0: ', document.implementation.hasFeature('Core', '1.0') );
+		console.log( 'DOM2.0: ', document.implementation.hasFeature('Core', '2.0') );
+		console.log( 'DOM3.0: ', document.implementation.hasFeature('Core', '3.0') );
 
+        /**
+          * HTMLCollection
+        var imgs = document.images;
+        console.log( imgs.namedItem('ttt') );
+        console.log( imgs['ttt'] );
+        */
+
+        /**
+          * getElementsByTagName
+          * 这个接口返回NodeList并非HTMLCollection
+          * 也就是说没有namedItem这个方法
+		var divs = document.getElementsByTagName('div'); // NodeList
+		console.log( divs.item(0) );
+		console.log( divs[0] );
+		
+		var imgs = document.getElementsByTagName('img');
+		console.log( imgs[0] );
+		console.log( imgs['ttt'] );
+		console.log( imgs.namedItem('ttt') ); // error
+        */
+	
         /**
           * 只对脚步动态创建的有效
         var p1 = document.querySelector('#p1')
