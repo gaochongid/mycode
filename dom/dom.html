@@ -28,13 +28,61 @@
 	<img src="http://www.baidu.com/img/420b_ead78e6081de7939cdf8eff9e608617f.gif" alt=""/>
 	<img src="http://www.baidu.com/img/420b_ead78e6081de7939cdf8eff9e608617f.gif" name="ttt" alt=""/>
 	
+    <form action="" name="f1">
+        <input type="text" value="123" />
+    </form>
+    <button id="r">reset</button>
+
     <script type="text/javascript">
+
+        var frag
+
+        /**
+        // IE8及以下将value重置为空
+        var input = document.createElement('input');
+        input.setAttribute('type', 'text');
+        input.setAttribute('value', 'xxx');
+        document.forms['f1'].appendChild(input);
+        document.getElementById('r').onclick = function () {
+            document.forms['f1'].reset();
+        };
+        */
+
+        /**
+        // 在IE7中name属性被设置成submitName
+        var iframe = document.createElement('iframe');
+        iframe.setAttribute('name', 'm');
+        document.body.appendChild(iframe);
+        */ 
+
+        /**
+        // 动态创建reset在IE7及以下不能重置表单
+        var btn = document.createElement('button');
+        btn.setAttribute('type', 'reset');
+        btn.appendChild(document.createTextNode('reset button'));
+        document.forms['f1'].appendChild(btn);
+        */
+
+        /**
 		console.log( 'DOM1.0: ', document.implementation.hasFeature('Core', '1.0') );
 		console.log( 'DOM2.0: ', document.implementation.hasFeature('Core', '2.0') );
 		console.log( 'DOM3.0: ', document.implementation.hasFeature('Core', '3.0') );
+        */
 
-        var myDiv = document.getElementById('myDiv');
-        console.log(myDiv.attributes);
+        /**
+        var myDiv = document.getElementById('myDiv')
+        , attrs = myDiv.attributes;
+
+        console.group('attrs');
+        console.log(attrs.getNamedItem('align'));
+        console.log(attrs.getNamedItem('align').nodeName);
+        console.log(attrs.getNamedItem('align').nodeValue);
+        console.log(attrs.item(0));
+        console.log(attrs.getNamedItem('align') instanceof Attr);
+        console.log(myDiv.getAttribute('align'));
+        console.log(attrs.removeNamedItem('align'));
+        console.groupEnd('attrs');
+        */
 
         /**
         var di2 = document.getElementById('di2');
