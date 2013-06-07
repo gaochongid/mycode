@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>test communication api</title>
+	</head>
+	<body>
+		<h3>get and post message for 172.16.17.224</h3>
+		<input type="text" id="input"/>
+		<button id="post">post</button>
+		<button id="open">open</button>
+		<script type="text/javascript">
+			var targetOrigin = 'http://172.16.17.224'
+			, ref = '';
+			function messageHandler(e) {
+				if ( e.origin === targetOrigin ) {
+					var p = document.createElement('p');
+					p.textContent = e.data;
+					document.body.appendChild(p);
+				}
+			}
+			document.querySelector('#post').addEventListener('click', function () {
+				ref.postMessage(document.querySelector('#input').value, targetOrigin);
+			}, false);
+			document.querySelector('#open').addEventListener('click', function () {
+				ref = window.open(targetOrigin+'/static/commapi-2.html');
+			}, false);
+			window.addEventListener('message', messageHandler, false);
+		</script>
+	</body>
+</html>

@@ -11,8 +11,8 @@
 </head>
 <body>
     <div id="t" style="background-color: red; height:20px;">                </div>
-    <div id="t1" style="background-color: red; height:20px;"></div>
-	<div id="div1">
+    <div id="t1" style="background-color: red; height:20px;">will replace</div>
+	<div id="div1" data-name="gc">
 		<h3>this is h3 element</h3>
 		<p id="p1" class="class1 class2" i="2432432432">
 			this is p element
@@ -30,12 +30,132 @@
 	
     <form action="" name="f1">
         <input type="text" value="123" />
+		
+		<input type="submit" value="submit"/>
     </form>
     <button id="r">reset</button>
-
+	
+	<ul id="ul" class="c1 c2 c3" style="height: 1000px;">
+		<li>1111111111</li>
+		<li>1111111111</li>
+		<li>
+			<ul>
+				<li>2222222222</li>
+				<li>2222222222</li>
+				<li>2222222222</li>
+				<li>2222222222</li>
+				<li>2222222222</li>
+				<li>2222222222</li>
+				<li>2222222222</li>
+				<li>2222222222</li>
+				<li>2222222222</li>
+				<li>2222222222</li>
+				<li>2222222222</li>
+				<li>2222222222</li>
+				<li>2222222222</li>
+				<li>2222222222</li>
+				<li>2222222222</li>
+				<li>2222222222</li>
+				<li>2222222222</li>
+				<li>2222222222</li>
+				<li>2222222222</li>
+				<li>2222222222</li>
+				<li>2222222222</li>
+				<li>2222222222</li>
+				<li>2222222222</li>
+				<li>2222222222</li>
+				<li>2222222222</li>
+				<li>2222222222</li>
+				<li>2222222222</li>
+				<li>2222222222</li>
+			</ul>
+		</li>
+	</ul>
+	<p id="scrollIntoView">test scrollIntoView</p>
+	<!--
+	<script type="text/javascript">
+		window.onload = function () {
+			console.log('load: ', document.readyState);
+		};
+	</script>
+	-->
+	
     <script type="text/javascript">
+		// window.addEventListener('load', function () {
+			// document.getElementById('scrollIntoView').scrollIntoView();
+		// }, false);
+		
+		// document.querySelector('#t1').insertAdjacentHTML('afterend', '<p>hello world</p>');
+		// document.querySelector('#t1').insertAdjacentHTML('beforeend', '<p>hello world</p>');
+		// document.querySelector('#t1').insertAdjacentHTML('afterbegin', '<p>hello world</p>');
+		// document.querySelector('#t1').insertAdjacentHTML('beforebegin', '<p>hello world</p>');
+	
+		document.getElementById('t1').outerHTML = '<p>outerHTML replace div</p>'
+	
+		// document.querySelector('#t').innerHTML = '_<script defer>alert(1);<\/script>';
 
-        var frag
+		/**
+		var div = document.getElementById('div1');
+		console.log(div.dataset.name);
+		*/
+		
+		// console.log(document.readyState);
+	
+		// console.log(document.activeElement);
+	
+		/**
+		var ul = document.querySelector('#ul')
+		, cl = ul.classList;
+		console.log(cl.add('c4'));
+		*/
+	
+		/**
+		var ul = document.querySelector('#ul');
+		console.log(ul.childElementCount);
+		console.log(ul.childNodes.length);
+		*/
+	
+		/**
+		var lis = document.querySelector('#ul').querySelectorAll('li');
+		console.log(lis);
+		console.log(document.querySelectorAll('#ul li'));
+		console.log(document.querySelectorAll('#ul > li'));
+		document.querySelector('#ul').appendChild(document.createElement('li'));
+		*/
+	
+		/**
+		var style = document.createElement('style');
+		style.type = 'text/css';
+		style.appendChild(document.createTextNode('body {font-size:20px;}'));
+		document.getElementsByTagName('head')[0].appendChild(style);
+		*/
+	
+		/**
+		var script = document.createElement('script');
+		script.type = 'text/javascript';
+		script.appendChild( document.createTextNode('var f = function () { alert("ok") }();') );
+		document.body.appendChild(script);
+		*/
+	
+		// console.log(document.getElementById('ul').getElementsByTagName('li').length);
+	
+
+		/**
+        var frag = document.createDocumentFragment();
+		for ( var i = 0; i < 3; i++ ) {
+			var radio = document.createElement('input');
+			radio.setAttribute('type', 'radio');
+			radio.setAttribute('name', 's');
+			radio.value = i;
+			frag.appendChild(radio);
+		}
+		document.forms['f1'].appendChild(frag);
+		document.forms['f1'].addEventListener('submit', function (e) {
+			console.log(e);
+			
+			return false;
+		}, false);
+		*/
 
         /**
         // IE8及以下将value重置为空

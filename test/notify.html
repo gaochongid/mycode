@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>   
+<html>  
+<head>  
+    <title>Creating OS notifications in HTML5</title>  
+</head>  
+<body>  
+   
+  
+        <input type="button" value="Hey, do you want to show notifications or not?" onclick="init();" />  
+        <input type="button" value="Send OS notification" onclick="notify();" />  
+  
+   
+    <script type="text/javascript">  
+        
+        function init() {  
+            if (window.webkitNotifications) {  
+                window.webkitNotifications.requestPermission();  
+            }  
+        }  
+   
+        function notify() {
+/**		
+            var icon = "accept.png";  
+            var title = "[" + new Date().toLocaleTimeString() + "] This notification will close in " + AUTO_CLOSE_DELAY_SECONDS + " seconds";  
+            var body =  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus id magna ut sapien sodales ultricies eget nec metus. Pellentesque molestie nunc nec leo iaculis eu dictum ante porta. Sed adipiscing condimentum sapien a scelerisque. Quisque luctus elit vel odio semper iaculis. Nunc sit amet neque justo. Phasellus ullamcorper dui vel risus varius vitae aliquet purus consectetur. Fusce felis nibh, volutpat ac ornare at, ullamcorper eget lacus. Nunc euismod iaculis porta. In hac habitasse platea dictumst. Proin a sem sed neque tincidunt scelerisque eget in elit. Ut quis felis quis tortor sollicitudin sollicitudin id quis tortor. Nunc porttitor diam id leo lobortis aliquet. Nam scelerisque molestie dolor, placerat hendrerit urna euismod eu. Praesent nec massa enim. Donec nec urna dignissim nunc fringilla luctus. Nunc pretium urna et diam accumsan fermentum. Vivamus condimentum lectus vitae mi vulputate pulvinar. Curabitur adipiscing ultrices arcu. Vestibulum luctus malesuada erat sit amet rutrum. Nam feugiat lectus quis libero adipiscing laoreet.";  
+   
+            if (window.webkitNotifications) {  
+                if (window.webkitNotifications.checkPermission() == 0) {  
+                    var popup = window.webkitNotifications.createNotification(icon, title, body);  
+                    popup.ondisplay = function(event) {  
+                        setTimeout(function() {  
+                            event.currentTarget.cancel();  
+                        }, AUTO_CLOSE_DELAY_SECONDS * 1000);  
+                    }  
+                    popup.show();  
+                } else {  
+                    window.webkitNotifications.requestPermission();  
+                    return;  
+                }  
+            }  
+			*/
+			
+		
+			// Create a new notification
+		  var notification = window.webkitNotifications.createNotification('http://dangercove.com/images/logo.png', 'test', 'test test');
+		  notification.ondisplay = function() {
+			// $('#plain_debug').html('Fired the <b>ondisplay</b> event<br>' + $('#plain_debug').html());
+			// console.log('show');
+		  };
+		  notification.onclose = function() {
+			// $('#plain_debug').html('Fired the <b>onclose</b> event<br>' + $('#plain_debug').html());
+			// console.log('close');
+		  };
+		  // Display the notification, calling close() on notification will dismiss it
+		  notification.show();
+			}  
+    </script>  
+   
+</body>  
+</html
