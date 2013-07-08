@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>test browser closed</title>
+	</head>
+	<body>
+		<h3>test browser closed</h3>
+		<script type="text/javascript">
+            window.addEventListener('beforeunload', function () {
+                console.log('-------------------');
+                return false;
+            }, false);
+            window.addEventListener('unload', function () {
+                console.log('=========================');
+                return false;
+            }, false);
+		</script>
+	</body>
+</html>
