@@ -6,8 +6,10 @@
 	</head>
 	<body>
 		<h3>get and post message for 172.16.17.220</h3>
-		<input type="text" id="input"/>
-		<button>post</button>
+        <!--
+		   -<input type="text" id="input"/>
+		   -<button>post</button>
+           -->
 		
 		<script type="text/javascript">
 			var targetOrigin = 'http://172.16.17.220';
@@ -16,8 +18,8 @@
 					var p = document.createElement('p');
 					p.textContent = e.data;
 					document.body.appendChild(p);
-					
-					e.source.postMessage('get', targetOrigin);
+                    console.log(e.source);
+					e.source.postMessage('get: '+e.data, targetOrigin);
 				}
 			}
 			/**
