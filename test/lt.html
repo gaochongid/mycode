@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<button>click</button>
+	<script type="text/javascript">
+		var a = 1;
+		function demo(e) {
+			console.log('key: '+e.key+', newValue: '+e.newValue+', oldValue: '+e.oldValue+', url: '+e.url+', storageArea: '+e.storageArea);
+		}
+		window.addEventListener('storage', demo, true);
+		document.querySelector('button').addEventListener('click', function () {
+			localStorage.t = JSON.stringify({a: a++});
+		}, false);
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script type="text/javascript src="http://code.jquery.com/jquery-1.8.3.js"></script>
+	<script type="text/javascript" src="json2.js"></script>
+	<script type="text/javascript" src="jstorage.js"></script>
+</head>
+<body>
+	<button id="c">click</button>
+	<script type="text/javascript">
+	var x = 1;
+	$.jStorage.listenKeyChange("a", function(key, action){
+		// alert(key + " has been " + action);
+		alert($.jStorage.get('a'));
+	});
+	// $.jStorage.deleteKey('a');
+	 // alert($.jStorage.get('a'));
+		// $.jStorage.set('a', 1);
+		// $.jStorage.set('a1', 1);
+		// alert($.jStorage.get('a'));
+		// $.jStorage.flush(); // remove all data
+		// alert($.jStorage.get('a'));
+		// alert($.jStorage.get('a1'));
+		// alert($.jStorage.storageSize());
+		
+		
+		document.getElementById('c').onclick = function () {
+	
+			// var ta = $.jStorage.get('a') || x;
+			$.jStorage.set('a', JSON.stringify({m: x}));
+		};
+	</script>
+</body>
+</html>
