@@ -5,12 +5,12 @@
 		<title>test communication api</title>
 	</head>
 	<body>
-		<h3>get and post message for 172.16.17.224</h3>
+		<h3>get and post message for 172.16.17.221</h3>
 		<input type="text" id="input"/>
 		<button id="post">post</button>
 		<button id="open">open</button>
 		<script type="text/javascript">
-			var targetOrigin = 'http://172.16.17.224'
+			var targetOrigin = 'http://172.16.17.221'
 			, ref = '';
 			function messageHandler(e) {
 				if ( e.origin === targetOrigin ) {
@@ -23,7 +23,8 @@
 				ref.postMessage(document.querySelector('#input').value, targetOrigin);
 			}, false);
 			document.querySelector('#open').addEventListener('click', function () {
-				ref = window.open(targetOrigin+'/static/commapi-2.html');
+				ref = window.open(targetOrigin+'/commapi-2.html');
+				console.log(ref);
 			}, false);
 			window.addEventListener('message', messageHandler, false);
 		</script>
