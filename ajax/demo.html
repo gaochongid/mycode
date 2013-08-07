@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>test ajax lib</title>
+		<script src="ajax.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/**
+			$.get('demo.php', {a: 1}, function ( data ) {
+				alert(data);
+			}, function ( code ) {
+				alert(code);
+			});
+			*/
+			$.post('demo.php', {a: 1}, function (data) {
+				alert(data);
+			}, function (code) {
+				alert(code);
+			});
+		</script>
+	</body>
+</html>
