@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>test selector</title>
+	<style>
+		ul>li:first-child {
+			background-color: red;
+		}
+		/*ul>li:last-child {
+			background-color: yellow;
+		}*/
+		ul>li:nth-child(2) {
+			background-color: yellow;
+		}
+		li::first-letter {
+			font-size: 300%;
+		}
+		li::first-line {
+			font-variant: small-caps;
+		}
+        p.age::before {
+            content: 'Age is: ';
+        }
+        p.age::after {
+            content: ' years.'
+        }
+	</style>
+</head>
+<body>
+	<ul>
+		<li>this is li</li>
+		<li>11111111</li>
+		<li>11111111</li>
+		<li>11111111</li>
+		<li>
+			<ul>
+				<li>11111111</li>
+				<li>11111111</li>
+				<li>11111111</li>
+				<li>11111111</li>
+				<li>11111111</li>
+			</ul>
+		</li>
+	</ul>
+    <p class="age">29</p>
+</body>
+</html>
