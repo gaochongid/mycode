@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>opacity</title>
+		<style>
+			div {
+				height: 200px;
+				background-color: red;
+				margin-bottom: 10px;
+			}
+			h1 {
+				background-color: yellow;
+			}
+			.div1 {
+				opacity: 0.5;
+				position: relative;
+				z-index: 2;
+			}
+			.bg-red {
+				background-color: red;
+			}
+			
+			.div2 {
+				opacity: 0.3;
+				position: relative;
+			}
+			.div2 > h1 {
+				position: absolute;
+				background-color: red;
+				top: -123px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="div1">
+			<h1>h1 in div1</h1>
+			<h1 class="bg-red">h1 in div1</h1>
+		</div>
+		
+		<div class="div2">
+			<h1>h1 in div2</h1>
+		</div>
+	</body>
+</html>
