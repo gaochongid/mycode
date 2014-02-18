@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+  </head>
+  <body>
+    <!--<img id="image0" src="http://w3c-test.org/webperf/image0.png" />-->
+    <script>
+		/**
+		function demo() {
+			for ( var i = 0; i < 100000; i++ ) {
+				console.log(i);
+			}
+		}
+       function init() 
+       {
+            performance.mark("startWork"); // see [User Timing]
+            demo(); // Some developer code
+            // performance.mark("endWork");
+            
+            measurePerf();
+       }
+
+       function measurePerf() 
+       {
+           var perfEntries = performance.getEntries();
+           for (var i = 0; i < perfEntries.length; i++)
+           {
+                 if (window.console) console.log("Name: "        + perfEntries[i].name      + 
+                                                 " Entry Type: " + perfEntries[i].entryType +
+                                                 " Start Time: " + perfEntries[i].startTime + 
+                                                 " Duration: "   + perfEntries[i].duration  + "\n");
+           }
+       }
+	   */
+	   function demo() {
+		
+			window.a = function () {
+					console.log('============')
+					delete window.a;
+			}
+			window.a();
+	   }
+	   demo();
+	   console.log(typeof a);
+    </script>
+  </body>
+</html>

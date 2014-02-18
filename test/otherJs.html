@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		/**
+		var a = {class: "Animal", name: 'Fido'};
+		console.log(a.class) // Animal
+		*/
+		
+		/**
+		var k = [,,,].join(", ");
+		console.log(k); // , ,  
+		// 这个数组会省略最后的","
+		// 其中每项的值为undefined，而不是'undefined'
+		console.log([,,,].toString());
+		*/
+		
+		/**
+		var lowerCaseOnly =  /^[a-z]+$/;
+		var k = [lowerCaseOnly.test(null), lowerCaseOnly.test()];
+		console.log(k) // [ true, true ]
+		*/
+		
+		/**
+		function f() {}
+		var parent = Object.getPrototypeOf(f);
+		console.log(f.name) // f
+		console.log(parent.name) // Empty
+		console.log(typeof eval(f.name)) // function
+		console.log(typeof eval(parent.name)) // error Empty is not defined
+		*/
+		
+		/**
+		var k = "1 2 3".replace(/d/g, parseInt);
+		console.log(k) // 1 2 3
+		*/
+		
+		/**
+		function foo() { }
+		var oldName = foo.name;
+		foo.name = "bar";
+		console.log([oldName, foo.name]);
+		*/
+		
+		/**
+		function f() {}
+		var a = f.prototype, b = Object.getPrototypeOf(f);
+		console.log(a, b, a === b); // f {} function Empty() {} false
+		*/
+		
+		
+		var a = {}, b = Object.prototype;
+		console.log([a.prototype === b, Object.getPrototypeOf(a) === b]); // false, true
+	</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>requestAnimationFrame</title>
+		<style>
+			#t {
+				height: 200px;
+				width: 200px;
+				background-color: red;
+				position: absolute;
+				left: 500px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="t">
+			
+		</div>
+
+		<script>
+			(function() {
+			  var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+			                              window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+			  window.requestAnimationFrame = requestAnimationFrame;
+			})();
+
+			var start = Date.now();  // 只有Firefox支持mozAnimationStartTime属性,其他浏览器可以使用Date.now()来替代.
+			var d = document.querySelector('#t');
+			function step(timestamp) {
+			  var progress = timestamp - 10;
+			  d.style.left = Math.min(progress/10, 200) + "px";
+			  console.log(window.mozAnimationStartTime);
+			  if (progress < 2000) {
+			    requestAnimationFrame(step);
+			  }
+			}
+			// console.log(Date.now(), window.mozAnimationStartTime);
+			// console.log('----------------------------');
+			requestAnimationFrame(step);
+		</script>
+
+	</body>
+</html>
