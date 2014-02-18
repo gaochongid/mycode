@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>javascript 观察者模式、发布\订阅</title>
+</head>
+<body>
+	<script type="text/javascript" src="pubsub.js"></script>
+	
+	<script type="text/javascript">
+		var s1 = pubsub.subscribe('c1', function (channel, data) {
+			console.log(channel + ":" + data);
+		});
+		
+		var s2 = pubsub.subscribe('c1', function (channel, data) {
+			console.log(channel + ":" + JSON.stringify(data));
+		});
+		 
+		 
+		pubsub.publish('c1', 'hello world!');
+		pubsub.publish('c1', ['test', 'a', 'b', 'c']);
+		pubsub.publish('c1', [{ 'color': 'blue' }, { 'text': 'hello'}]);
+		
+		setTimeout(function () {
+			pubsub.unsubscribe(s1);
+		}, 0);
+
+		pubsub.publish('c1', 'ok');
+		
+	</script>
+</body>
+</html>
