@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>test custom event</title>
+</head>
+<body>
+    <p>this is p</p> 
+    <script>
+        var p = document.querySelector('p');
+        document.body.addEventListener('cs', function () {
+            console.log('----------------');
+        }, false);
+        p.addEventListener('cs', function () {
+            console.log('===============');
+        }, false);
+
+        // args: DOMString eventType
+        // return: Event Object
+        var evts = document.createEvent('HTMLEvents');
+        // args1: custom eventName
+        // args2: canBubble
+        // args3: cancleAble
+        evts.initEvent('cs', true, true);
+
+        setTimeout(function () {
+            // args: event Object
+            // return boolean
+            p.dispatchEvent(evts);
+        }, 5000);
+
+        p.addEventListener('uics', function () {
+            console.log('======ui event=========');
+        }, false);
+        var uiEvts = document.createEvent('UIEvents');
+        uiEvts.initUIEvent('uics', true, true);
+        p.dispatchEvent(uiEvts);
+        
+        p.addEventListener('mscs', function () {
+            console.log('======mscs event=========');
+        }, false);
+        var MEvts = document.createEvent('MouseEvents');
+        MEvts.initMouseEvent('mscs', true, true);
+        p.dispatchEvent(MEvts);
+
+    </script>
+</body>
+</html>
