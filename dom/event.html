@@ -3,18 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>test custom event</title>
+	<!--<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>-->
 </head>
 <body>
     <p>this is p</p> 
     <script>
         var p = document.querySelector('p');
+		
+		/**
+		HTMLEvents	HTMLEvent	initEvent()
+		MouseEvents	MouseEvent	initMouseEvent()
+		UIEvents	UIEvent	initUIEvent()
+		*/
+		
+		/**
+		* HTMLEvents
         document.body.addEventListener('cs', function () {
             console.log('----------------');
         }, false);
         p.addEventListener('cs', function () {
             console.log('===============');
         }, false);
-
         // args: DOMString eventType
         // return: Event Object
         var evts = document.createEvent('HTMLEvents');
@@ -28,21 +37,73 @@
             // return boolean
             p.dispatchEvent(evts);
         }, 5000);
-
+		*/
+		
+		
+		/**
+		void initUIEvent(
+		  in DOMString typeArg,
+		  in boolean canBubbleArg,
+		  in boolean cancelableArg,
+		  in views::AbstractView viewArg, // 生成该事件的视图. 只读.
+		  in long detailArg
+		);
+		*/
+		
+		/**
         p.addEventListener('uics', function () {
             console.log('======ui event=========');
         }, false);
         var uiEvts = document.createEvent('UIEvents');
-        uiEvts.initUIEvent('uics', true, true);
+        uiEvts.initUIEvent('uics', true, true, null, 0);
         p.dispatchEvent(uiEvts);
         
         p.addEventListener('mscs', function () {
             console.log('======mscs event=========');
         }, false);
         var MEvts = document.createEvent('MouseEvents');
-        MEvts.initMouseEvent('mscs', true, true);
+        MEvts.initMouseEvent('mscs', true, true, null, 0, 0, 0, 0, 0, false, false, false, false, 0, p);
         p.dispatchEvent(MEvts);
+		*/
+		
+		/**
+		* 在事件传播的过程中改变dom结构，不会影响传播路径
+		* 输出结果
+		* 1111111111111111111
+		* 2222222222222222222
+		* 3333333333333333333
+		*=========================================
+		document.body.addEventListener('cs', function () {
+			console.log('1111111111111111111');
+		}, true);
+		document.body.addEventListener('cs', function () {
+			console.log('3333333333333333333');
+		}, false);
+		p.addEventListener('cs', function () {
+			console.log('2222222222222222222');
+			document.body.removeChild(p);
+		}, false);
 
+		var evt = document.createEvent('HTMLEvents');
+		evt.initEvent('cs', true, true);
+		p.dispatchEvent(evt);
+		*/
+		
+		/**
+		p.addEventListener('click', function () {
+			console.log('========click============');
+		}, false);
+		p.addEventListener('cs', function () {
+			console.log('2222222222222222222');
+		}, false);
+		$('p').click(function () {
+			console.log('-----------------')
+		});
+		$('p').on('cs', function () {
+			console.log('-----------------')
+		});
+		$('p').trigger('cs');
+		*/
     </script>
 </body>
 </html>
