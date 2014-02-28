@@ -1,0 +1,9 @@
+{
+  "family": "pro",
+  "name": "test",
+  "version": "1.0.0",
+  "spm": {
+	"source": "src/js/",
+    "output": ["a.js", "b.js", "c.js"]
+  }
+}
