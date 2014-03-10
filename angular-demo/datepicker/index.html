@@ -1,0 +1,29 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+	<meta charset="UTF-8">
+	<title>angular datepicker</title>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+	
+	<script>
+	document.write('<base href="' + document.location + '" />');
+	</script>
+	<script src="datepicker.js"></script>
+	<script src="app.js"></script>
+</head>
+<body ng-controller="MainCtrl">
+	<input type="text" 
+		id="dateField" 
+		datepicker 
+		ng-model="$parent.currentDate" 
+		select="updateMyText(date)"
+		date-s1="{{currentDate}}"
+		date-s2="currentDate"
+		/>
+
+	<p>{{myText}} - {{currentDate}}</p>
+</body>
+</html>
