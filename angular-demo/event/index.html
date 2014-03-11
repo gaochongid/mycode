@@ -1,0 +1,31 @@
+<!doctype html>
+<html ng-app>
+
+<head>
+    <meta charset="UTF-8">
+    <title>scope event</title>
+    <script src="../lib/angular.min.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div ng-controller="EventController">
+        Root scope
+        <tt>MyEvent</tt>count: {{count}}
+        <ul>
+            <li ng-repeat="i in [1]" ng-controller="EventController">
+                <button ng-click="emitTrigger()">$emit('MyEvent')</button>
+                <button ng-click="broadcastTrigger()">$broadcast('MyEvent')</button>
+                <br>Middle scope
+                <tt>MyEvent</tt>count: {{count}}
+                <ul>
+                    <li ng-repeat="item in [1, 2]" ng-controller="EventController">Leaf scope
+                        <tt>MyEvent</tt>count: {{count}}
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
