@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>a element demo</title>
+</head>
+<body ng-app ng-controller="ACtrl">
+	<a href="" ng-click="alert('x')">test click</a>
+	<script src="../lib/angular.min.js"></script>
+	<script>
+		function ACtrl($scope, $window) {
+			$scope.alert = function (val) {
+				$window.alert(val);
+			}
+		}
+	</script>
+</body>
+</html>
