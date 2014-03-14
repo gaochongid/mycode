@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ngClassEven And anClassOdd</title>
+	<style>
+		.odd {
+			color: red;
+		}
+		.even {
+			color: blue;
+		}
+	</style>
+</head>
+<body ng-app>
+	<ol ng-init="names=['java', 'javascript', 'php', 'python']">
+		<li ng-repeat="name in names">
+			<span ng-class-odd="'odd'" ng-class-even="'even'">{{name}}</span>
+		</li>
+	</ol>
+	<script src="../lib/angular-1.2.14.js"></script>
+</body>
+</html>

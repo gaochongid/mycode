@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ngCopy</title>
+</head>
+<body ng-app>
+	<input type="text"
+	ng-copy="a=true"
+	ng-init="a=false; value='copy me!'"
+	ng-model="value"
+	/>
+	copy: {{a}}
+	<script src="../lib/angular-1.2.14.js"></script>
+</body>
+</html>

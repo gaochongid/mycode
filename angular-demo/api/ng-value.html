@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ngValue</title>
+</head>
+<body ng-app="app">
+	<form action="" ng-controller="FormCtrl">
+		<h2>Which is your like</h2>
+		<label for="{{name}}" ng-repeat="name in names">
+			<input type="radio" 
+						ng-model="my.f" 
+						ng-value="name"
+						id="{{name}}"
+						name="f"/>{{name}}
+		</label>
+		<div>you chose {{my.f}}</div>
+	</form>
+	
+	<script src="../lib/angular-1.2.14.js"></script>
+	<script>
+		angular.module('app', [])
+		.controller('FormCtrl', ['$scope', function (s) {
+			s.names = ['java', 'javascript', 'php'];
+			s.my = {f: 'javascript'};
+		}]);
+	</script>
+</body>
+</html>

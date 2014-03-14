@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ng-bind</title>
+</head>
+<body ng-app>
+	<div ng-controller="BindCtrl">
+		your name: <input type="text" ng-model="name" /><br>
+		Hello, <span ng-bind="name"></span>! <br>
+		And, {{name}}
+	</div>
+	<script src="../lib/angular-1.2.14.js"></script>
+	<script>
+		var BindCtrl = function ( $scope ) {
+			$scope.name = 'gc';
+		};
+	</script>
+</body>
+</html>

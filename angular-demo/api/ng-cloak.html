@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ngCloak</title>
+	<style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide{display:none !important;}ng\:form{display:block;}.ng-animate-start{clip:rect(0,auto,auto,0);-ms-zoom:1.0001;}.ng-animate-active{clip:rect(-1px,auto,auto,0);-ms-zoom:1;}
+	</style>
+</head>
+<body ng-app ng-csp>
+	<!--
+	解决浏览器在解析时闪动问题
+	解决方式先隐藏，在显示
+-->
+	<div id="template1" ng-cloak>{{ 'hello' }}</div>
+	<div id="template2" ng-cloak class="ng-cloak">{{ 'hello IE7' }}</div>
+	<script src="../lib/angular-1.2.14.js"></script>
+</body>
+</html>

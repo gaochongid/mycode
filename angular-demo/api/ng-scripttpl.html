@@ -1,0 +1,35 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<title>script template</title>
+	<script src="../lib/angular-1.2.14.js"></script>
+	<script src="../lib/angular-route.js"></script>
+</head>
+<body>
+	<div ng-view></div>
+
+	<script>
+		var app = angular.module('app', ['ngRoute']);
+		app.config(['$routeProvider',function(rp) {
+			rp.when('/', {
+				controller: Ctrl,
+				templateUrl: '/tpl.html'
+			}).otherwise({
+				redirectTo: '/'
+			});
+		}]);
+		/**
+		app.controller('Ctrl', ['$scope', function (s) {
+			s.name = 'gc'
+		}]);
+*/
+		function Ctrl($scope) {
+			$scope.name = 'gc';
+		}
+	</script>
+	<script type="text/ng-template" id="/tpl.html">
+		<p>{{name}}</p>
+	</script>
+</body>
+</html>

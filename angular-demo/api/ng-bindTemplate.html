@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ng-bindTemplate</title>
+</head>
+<body ng-app="app">
+	<div ng-controller="TplCtrl">
+		sal: <input type="text" ng-model="sal" /> <br>
+		name: <input type="text" ng-model="name" /> <br>
+		<pre ng-bind-template="{{sal}} {{name}}"></pre>
+	</div>
+	<script src="../lib/angular-1.2.14.js"></script>
+	<script>
+		angular.module('app', []).controller('TplCtrl', ['$scope' , function (s) {
+			s.sal = 'gao';
+			s.name = 'chong';
+		}]);
+	</script>
+</body>
+</html>

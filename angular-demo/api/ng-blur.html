@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ngBlur</title>
+</head>
+<body ng-app="app">
+	<div ng-controller="BlurCtrl">
+		<input type="text" ng-blur="blur($event)">
+	</div>
+	<script src="../lib/angular-1.2.14.js"></script>
+	<script>
+		angular.module('app', []).controller('BlurCtrl', ['$scope', function (s) {
+			s.blur = function (e) {
+				console.log(e);
+			};
+		}]);
+	</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+  <meta name="renderer" content="webkit">
+	<title>radio</title>
+</head>
+<body ng-app>
+	<form action="" name="myForm" ng-controller="RadioCtrl">
+		<input type="radio" name="x" ng-model="color" value="red"> red <br>
+		<input type="radio" name="x" ng-model="color" ng-value="xValue" ng-change="valueChange(this)"> green <br>
+		<input type="radio" name="x" ng-model="color" value="black"> black
+		<br>
+		<span>{{ color | json }}</span><br>
+    <span></span>
+	</form>
+	<script src="../lib/angular.min.js"></script>
+	<script>
+		function RadioCtrl($scope) {
+			$scope.color = 'black';
+			$scope.xValue = {
+				id: 1,
+				value: 'green'
+			};
+      $scope.valueChange = function (a) {
+        console.log(a === $scope) // true
+      };
+		}
+	</script>
+</body>
+</html>

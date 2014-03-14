@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ngInclude</title>
+	<base href="http://172.16.1.119/my/github/mycode/angular-demo/api/">
+</head>
+<body ng-app="app">
+	<div ng-controller="IncludeCtrl">
+		<select ng-model="template" ng-options="t.name for t in templates">
+			<option value="">(blank)</option>
+		</select>
+		url of template: <span>{{template.url}}</span>
+		<hr>
+		<div ng-include="template.url"></div>
+	</div>
+	<script src="../lib/angular-1.2.14.js"></script>
+	<script>
+		angular.module('app', [])
+		.controller('IncludeCtrl', ['$scope', function (s) {
+			s.templates = [
+				{
+					name: 'x.html',
+					url: './tpl/x.html'
+				},
+				{
+					name: 'y.html',
+					url: './tpl/y.html'
+				}
+			];
+			s.template = s.templates[0];
+		}]);
+	</script>
+</body>
+</html>
