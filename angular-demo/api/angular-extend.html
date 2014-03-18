@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>angular.extend</title>
+</head>
+<body ng-app="app" ng-controller="MainCtrl">
+	<div>{{a | json}}</div>
+	<div>{{b | json}}</div>
+	<script src="../lib/angular-1.2.14.js"></script>
+	<script>
+		var app = angular.module('app', []);
+		app.controller('MainCtrl', ['$scope', function ($scope) {
+			var a = {
+				x: 10
+			}
+			, b = {
+				y: 20
+			};
+			angular.extend(a, b);
+			$scope.a = a; // { "x": 10, "y": 20 }
+			$scope.b = b; // { "y": 20 }
+		}]);
+	</script>
+</body>
+</html>

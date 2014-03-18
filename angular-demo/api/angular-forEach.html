@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>angular.forEach</title>
+</head>
+<body ng-app="app" ng-controller="MainCtrl">
+	<div>{{res | json}}</div>
+	<div>{{res1 | json}}</div>
+	<script src="../lib/angular-1.2.14.js"></script>
+	<script>
+		var app = angular.module('app', []);
+		app.controller('MainCtrl', ['$scope', function ($scope) {
+			var a = {
+				x: 10,
+				y: 20
+			};
+			var log = [];
+
+			angular.forEach(a, function ( val, key ) {
+				this.push(val, key);
+			}, log);
+			$scope.res = log; // [ 10, "x", 20, "y" ]
+
+			log = [];
+
+			var b = [100, 200];
+			angular.forEach(b, function ( val, key ) {
+				this.push(val, key);
+			}, log);
+			$scope.res1 = log; // [ 100, 0, 200, 1 ]
+		}]);
+	</script>
+</body>
+</html>
