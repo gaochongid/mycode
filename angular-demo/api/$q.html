@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>angularjs $q</title>
+</head>
+<body ng-app="app" ng-controller="Main">
+	<div>{{users | json}}</div>
+	<div>{{users1 | json}}</div>
+	<script src="../lib/jquery-1.7.2.min.js"></script>
+	<script src="../lib/angular-1.2.14.js"></script>
+	<script>
+		var app = angular.module('app', []);
+
+		app.factory('_$UserInfo', ['$http', '$q', '$log', function ( $http, $q, $log ) {
+			return {
+				queryAll: function (url) {
+					var deferred = $q.defer();
+					// 使用form表单提交
+					$http({
+						method: 'POST', 
+						url: url, 
+						params: {
+							a: 10,
+							b: 11
+						},
+						data: $.param({
+							x:111
+						}),
+						headers: {
+							'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+						}
+					})
+					.success(function ( data, status, headers, config ) {
+						deferred.resolve(data);
+					})
+					.error(function ( data, status, headers, config ) {
+						deferred.reject(data);
+					});
+
+					return deferred.promise;
+				}
+			}
+		}]);
+
+		app.factory('_$Qwhen', ['$q', function ( $q ) {
+			return {
+				doIt: function () {
+					return {
+						status: 'a string'
+					};
+				}
+			};
+		}])
+
+		app.controller('Main', [
+			'$scope', '_$UserInfo', '$q', '_$Qwhen', 
+			function ($scope, UserInfo, $q, Qwhen) {
+				var promise = UserInfo.queryAll('data/person.php');
+				promise.then(function (data) {
+					$scope.users = data;
+				}, function (data) {
+					$scope.users = {error: 'not find!'};
+				});
+				promise.then(function (data) {
+					console.log(data);
+				}, function (data) {
+					console.log({error: 'not find!'});
+				});
+
+				var promise = UserInfo.queryAll('data/person1.json');
+				promise.then(function (data) {
+					$scope.users1 = data;
+				}, function (data) {
+					$scope.users1 = {error: 'not find!'};
+				}).catch(function () {
+				})['finally'](function () {
+				});
+
+				// Qwhen.doIt() return is not an promise object
+				// 主要用于当不是一个promise对象的时候可以使用then方法
+				$q.when(Qwhen.doIt()).then(function (data) {
+					console.log(data);
+				});
+
+			}
+		]);
+	</script>
+</body>
+</html>
