@@ -13,16 +13,26 @@
 	</script>
 	<script src="datepicker.js"></script>
 	<script src="app.js"></script>
+
+	<style>
+		.red {
+			color: red;
+		}
+	</style>
 </head>
 <body ng-controller="MainCtrl">
 	<input type="text" 
 		id="dateField" 
 		datepicker 
+		
 		ng-model="$parent.currentDate" 
 		select="updateMyText(date)"
 		date-s1="{{currentDate}}"
 		date-s2="currentDate"
 		/>
+
+	<h1 fy-active-tab-dir cname="red">this is one</h1>
+	<h1 fy-active-tab-dir cname="red">this is two</h1>
 
 	<p>{{myText}} - {{currentDate}}</p>
 </body>

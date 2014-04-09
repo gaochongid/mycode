@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>select</title>
+</head>
+<body ng-app="app" ng-controller="MainCtrl">
+	
+	<div ng-controller="ACtrl">
+		{{o.x}}, {{y}}
+		<div ng-controller="BCtrl">
+			{{o.x}}, {{y}}
+		</div>
+	</div>
+
+	<script src="../lib/angular-1.2.14.js"></script>
+	<script>
+		var app = angular.module('app', []);
+		app.controller('MainCtrl', ['$scope', function ($scope) {
+			$scope.items = ['java', 'javascript', 'php'];
+		}]);
+		app.controller('ACtrl', ['$scope', function ($scope) {
+			var o = {};
+			o.x = 10;
+			$scope.o = o;
+			$scope.y = 11;
+		}]);
+		app.controller('BCtrl', ['$scope', function ($scope) {
+			$scope.o.x = 20;
+			$scope.y = 22;
+		}]);
+	</script>
+</body>
+</html>

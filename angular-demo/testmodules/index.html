@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test modules</title>
+</head>
+<body ng-app="app" ng-controller="MainCtrl">
+	<p>
+		{{a}}<br>
+		{{b}}
+
+	</p>
+	<script src='../lib/angular-1.2.14.js'></script>
+	<script>
+		//var A = angular.module('A', []);
+		angular.module('A', []).factory('abc', function () {
+			return {a: 'acb'};
+		});
+	</script>
+	<script>
+		angular.module('A', []).factory('bcd', function () {
+			return {a: 'bcd'};
+		});
+	</script>
+	
+	<script>
+		angular.module('app', ['A']).controller('MainCtrl', [
+			'$scope', 'abc', 'bcd',
+			function ($scope, abc, bcd) {
+				$scope.a = abc.a;
+				$scope.b = bcd.a;
+		}]);
+	</script>
+</body>
+</html>

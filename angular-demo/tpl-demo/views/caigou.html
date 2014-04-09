@@ -1,0 +1,33 @@
+<div class="caigou">
+	<h3>货物详情</h3>
+	</p><em>货物名称</em><p>
+	<ul class="inline">
+		<li ng-repeat="item in pro.items">
+			<input type="radio" value="{{item}}" ng-model="goods.type">{{item}}
+		</li>
+	</ul>
+	<input type="text" ng-model="name">
+	</p><em>货物种类 {{goods.type}}</em><p>
+	<div ng-switch on="goods.type">
+		<ul ng-switch-when="无烟煤">
+			<li ng-repeat="attr in pro.attrs.wym">
+				{{attr}}：<input type="text" name="" id="">
+			</li>
+		</ul>
+		<ul ng-switch-when="烟煤">
+			<li ng-repeat="attr in pro.attrs.ym">
+				{{attr}}：<input type="text" name="" id="">
+			</li>
+		</ul>
+		<ul ng-switch-when="焦炭">
+			<li ng-repeat="attr in pro.attrs.jt">
+				{{attr}}：<input type="text" name="" id="">
+			</li>
+		</ul>
+		<ul ng-switch-when="其它">
+			<li ng-repeat="attr in pro.attrs.other">
+				{{attr}}：<input type="text" name="" id="">
+			</li>
+		</ul>
+	</div>
+</div>

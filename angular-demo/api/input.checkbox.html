@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angular input:checkbox</title>
+</head>
+<body ng-app="app" ng-controller="MainCtrl">
+	
+<!--
+	1.可以没有form
+	2.model的值必须与ng-*-value的值一致
+-->
+
+
+	<input type="checkbox" name="sex" 
+	ng-model="sex" 
+	ng-true-value="man" 
+	ng-false-value="woman" />
+	<span>{{sex}}</span>
+	
+	<script src="../lib/angular-1.2.14.js"></script>
+	<script>
+		angular.module('app', []).controller('MainCtrl', ['$scope', function ($scope) {
+			$scope.sex = 'man';
+		}]);
+	</script>
+</body>
+</html>

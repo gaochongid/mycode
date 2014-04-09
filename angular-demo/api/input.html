@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>angular input</title>
+</head>
+<body ng-app="app" ng-controller="MainCtrl">
+<!--
+	ng-maxlength
+	1.必须在form下
+	2.元素上必须有ng-model
+	3.必须要有ng-show
+-->
+	<form name="myForm" action="">
+		<input type="text" name="names" ng-model="name" ng-maxlength="10">
+		<span ng-show="myForm.names.$error.maxlength">to long!</span>
+	</form>
+	<script src="../lib/angular-1.2.14.js"></script>
+	<script>
+		angular.module('app', []).controller('MainCtrl', ['$scope', function ($scope) {
+			//$scope.name = 'abc';
+		}]);
+	</script>
+</body>
+</html>

@@ -45,4 +45,21 @@ angular.module('myApp.directives', []).directive('datepicker', function () {
 			element.datepicker(optObj);
 		}
 	};
-});
+}).directive('fyActiveTabDir', function () {
+        return {
+            restrict: 'A',
+            scope: {
+                cn: '@cname'
+            },
+            link: function ( scope, elem, attrs ) {
+                console.log('aaaaa')
+               elem.on('click', function (e) {
+                   console.log('-----------')
+                   e.preventDefault();
+                   var cn = scope.cn;
+                   elem.parent().find('.'+cn).removeClass(cn);
+                   elem.addClass(cn);
+               });
+            }
+        }
+    });

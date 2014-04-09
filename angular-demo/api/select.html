@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>select</title>
+</head>
+<body ng-app="app" ng-controller="MainCtrl">
+	
+	<select name="" ng-options="for i in items"></select>
+
+	<script src="../lib/angular-1.2.14.js"></script>
+	<script>
+		angular.module('app', []).controller('MainCtrl', ['$scope', function ($scope) {
+			$scope.items = ['java', 'javascript', 'php'];
+		}]);
+	</script>
+</body>
+</html>
