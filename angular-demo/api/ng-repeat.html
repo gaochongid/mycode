@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>angular ng-if</title>
+</head>
+<body ng-app ng-controller="MainCtrl">
+	<input type="checkbox" name="" ng-model="checked" ng-init="checked=true">
+
+	<span ng-if="checked">this is span</span>
+
+	<p ng-repeat="item in objs">
+		<em ng-if="item.id == '2'">ok!</em>
+	</p>
+
+	<script src="../lib/angular-1.2.14.js"></script>
+	<script src="http://code.angularjs.org/1.2.14/angular-animate.min.js"></script>
+
+	<script>
+		var MainCtrl = function ($scope) {
+			$scope.objs = [
+				{
+					id: 1,
+					name: 'gc'
+				},
+				{
+					id: 2,
+					name: 'xx'
+				}
+			]
+		}
+	</script>
+
+</body>
+</html>

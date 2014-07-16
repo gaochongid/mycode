@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ng-init</title>
+</head>
+<body ng-app="app" ng-controller="MainCtrl">
+	<div ng-init="demo.a = 10;demo.b=11;"></div>
+	{{demo | json}
+	<script src="../lib/angular-1.2.14.js"></script>
+	<script>
+		angular.module('app', [])
+		.controller('MainCtrl', ['$scope', function ($scope) {
+			$scope.demo = {};
+			setTimeout(function () {
+				console.log($scope.demo)
+			}, 1000);
+			
+		}])
+	</script>
+</body>
+</html>

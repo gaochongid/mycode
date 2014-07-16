@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>ngValue</title>
+</head>
+
+<body ng-app="app" ng-controller="FormCtrl">
+
+    <input type="number" name="" id="" ng-model="num">
+    <span>{{num | fy.checkmark:2}}</span>
+    <script src="../lib/angular-1.2.14.js"></script>
+    <script>
+    	var DECIMAL_SEP = '.';
+
+		function formatNumber(number, pattern, groupSep, decimalSep, fractionSize) {
+		    if (isNaN(number) || !isFinite(number)) return '';
+
+		    var isNegative = number < 0;
+		    number = Math.abs(number);
+		    var numStr = number + '',
+		        formatedText = '',
+		        parts = [];
+
+		    var hasExponent = false;
+		    if (numStr.indexOf('e') !== -1) {
+		        var match = numStr.match(/([\d\.]+)e(-?)(\d+)/);
+		        if (match && match[2] == '-' && match[3] > fractionSize + 1) {
+		            numStr = '0';
+		        } else {
+		            formatedText = numStr;
+		            hasExponent = true;
+		        }
+		    }
+
+		    if (!hasExponent) {
+		        var fractionLen = (numStr.split(DECIMAL_SEP)[1] || '').length;
+
+		        // determine fractionSize if it is not specified
+		        if (angular.isUndefined(fractionSize)) {
+		            fractionSize = Math.min(Math.max(pattern.minFrac, fractionLen), pattern.maxFrac);
+		        }
+
+		        var pow = Math.pow(10, fractionSize);
+		        number = Math.floor(number * pow) / pow;
+		        var fraction = ('' + number).split(DECIMAL_SEP);
+		        var whole = fraction[0];
+		        fraction = fraction[1] || '';
+		        var i, pos = 0,
+		            lgroup = pattern.lgSize,
+		            group = pattern.gSize;
+
+		        if (whole.length >= (lgroup + group)) {
+		            pos = whole.length - lgroup;
+		            for (i = 0; i < pos; i++) {
+		                if ((pos - i) % group === 0 && i !== 0) {
+		                    formatedText += groupSep;
+		                }
+		                formatedText += whole.charAt(i);
+		            }
+		        }
+
+		        for (i = pos; i < whole.length; i++) {
+		            if ((whole.length - i) % lgroup === 0 && i !== 0) {
+		                formatedText += groupSep;
+		            }
+		            formatedText += whole.charAt(i);
+		        }
+
+		        // format fraction part.
+		        while (fraction.length < fractionSize) {
+		            fraction += '0';
+		        }
+
+		        if (fractionSize && fractionSize !== "0") {
+		        	formatedText += decimalSep + fraction.substr(0, fractionSize);
+		        }
+		        
+		    } else {
+
+		        if (fractionSize > 0 && number > -1 && number < 1) {
+		            formatedText = number.toFixed(fractionSize);
+		        }
+		    }
+
+		    parts.push(isNegative ? pattern.negPre : pattern.posPre);
+		    parts.push(formatedText);
+		    parts.push(isNegative ? pattern.negSuf : pattern.posSuf);
+		    return parts.join('');
+		}
+    </script>
+    <script>
+    angular.module('app', [])
+        .controller('FormCtrl', ['$scope',
+            function(s) {
+                s.num = 99;
+            }
+        ]).filter('fy.checkmark', function() {
+            return function( number, fractionSize ) {
+            	return formatNumber(
+            		number, 
+		           	{ // Decimal Pattern
+			            minInt: 1,
+			            minFrac: 0,
+			            maxFrac: 3,
+			            posPre: '',
+			            posSuf: '',
+			            negPre: '-',
+			            negSuf: '',
+			            gSize: 3,
+			            lgSize: 3
+		          	}, 
+            		',', 
+            		'.',
+            		fractionSize
+            	);
+            };
+        });
+    </script>
+</body>
+
+</html>

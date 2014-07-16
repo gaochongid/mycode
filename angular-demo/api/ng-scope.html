@@ -3,28 +3,65 @@
 <head>
 	<meta charset="UTF-8">
 	<title>select</title>
+	<style media="screen">
+		.red-bg {
+			background-color: red;
+		}
+	</style>
 </head>
 <body ng-app="app" ng-controller="MainCtrl">
-	
+
 	<div ng-controller="ACtrl">
 		{{o.x}}, {{y}}
 		<div ng-controller="BCtrl">
 			{{o.x}}, {{y}}
 		</div>
+
+		<div ng-controller="CCtrl">
+			CCtrl, {{ z }}
+		</div>
 	</div>
 
-	<script src="../lib/angular-1.2.14.js"></script>
+	<script src="https://code.angularjs.org/1.2.9/angular.min.js"></script>
 	<script>
-		var app = angular.module('app', []);
+		var amodule = angular.module('amodule', [])
+		, bmodule = angular.module('bmodule', [])
+		, app = angular.module('app', ['amodule', 'bmodule']);
+
+
+		bmodule.directive('fyActiveTab', function () {
+	        return {
+	            restrict: 'A',
+	            scope: {
+	                className: '@cname'
+	            },
+	            link: function ( scope, elem, attrs ) {
+	               elem.on('click', function () {
+	                   elem.addClass(scope.className);
+	               });
+	            }
+	        }
+	    });
+
+
 		app.controller('MainCtrl', ['$scope', function ($scope) {
 			$scope.items = ['java', 'javascript', 'php'];
 		}]);
-		app.controller('ACtrl', ['$scope', function ($scope) {
+		app.controller('ACtrl', ['$scope',  function ($scope) {
 			var o = {};
 			o.x = 10;
 			$scope.o = o;
 			$scope.y = 11;
 		}]);
+
+		bmodule.controller('CCtrl', ['$scope', 'fyActiveTab',  function ($scope,fyActiveTab) {
+			$scope.z = 1000;
+		}]);
+		amodule.controller('CCtrl', ['$scope', function ($scope) {
+			$scope.z = 100;
+		}]);
+
+
 		app.controller('BCtrl', ['$scope', function ($scope) {
 			$scope.o.x = 20;
 			$scope.y = 22;
