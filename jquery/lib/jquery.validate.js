@@ -712,7 +712,7 @@ $.extend( $.validator, {
 				if ( this.settings.highlight ) {
 					this.settings.highlight.call( this, error.element, this.settings.errorClass, this.settings.validClass );
 				}
-				this.showLabel( error.element, error.message );
+				this.showLabel( error.element, error.message, error.method );
 			}
 			if ( this.errorList.length ) {
 				this.toShow = this.toShow.add( this.containers );
@@ -742,7 +742,7 @@ $.extend( $.validator, {
 			});
 		},
 
-		showLabel: function( element, message ) {
+		showLabel: function( element, message, method ) {
 			var place, group, errorID,
 				error = this.errorsFor( element ),
 				elementID = this.idOrName( element ),
@@ -769,7 +769,7 @@ $.extend( $.validator, {
 				if ( this.labelContainer.length ) {
 					this.labelContainer.append( place );
 				} else if ( this.settings.errorPlacement ) {
-					this.settings.errorPlacement( place, $( element ) );
+					this.settings.errorPlacement( place, $( element ), method );
 				} else {
 					place.insertAfter( element );
 				}

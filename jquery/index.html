@@ -4,20 +4,20 @@
 	<meta charset="UTF-8">
 	<title>validate</title>
 	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js"></script>
-	<script src="lib/jquery.validate.min.js"></script>
+	<script src="lib/jquery.validate.js"></script>
 	<script>
 		jQuery.validator.setDefaults({
 		  debug: true
 		});
 		jQuery.validator.addMethod("math", function(value, element, params) {
- return this.optional(element) || value == params[0];
-}, jQuery.validator.format("Please enter the correct value for {0}"));
+			return this.optional(element) || value == params[0];
+		}, jQuery.validator.format("Please enter the correct value for {0}"));
 
 	</script>
 </head>
 <body>
 	<form id="validateForm" action="">
-		username: <input type="text" name="username" math="3" required="true">
+		username: <input type="text" name="username" math="3" required="required">
 		<br>
 
 		<input type="submit" value="submit">
@@ -27,6 +27,10 @@
 			$('#validateForm').validate({
 				onfocusout:function (element) {
 		            this.element(element);
+		        },
+		        errorPlacement: function ( error, element, method ) {
+		        	console.log(method)
+
 		        }
 			});
 		});
