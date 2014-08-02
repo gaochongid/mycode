@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ui-router</title>
+	<script src="../lib/angular-1.2.14.js"></script>
+	<script src="../lib/angular-ui-router.js"></script>
+</head>
+<body ng-app="demo">
+	
+	<div ng-controller="MainCtrl">
+		<div ui-view></div>
+	</div>
+
+	<script>
+		angular.module('demo', ['ui.router'])
+		.config(function ( $stateProvider, $urlRouterProvider ) {
+			$urlRouterProvider.when('', '/admin');
+			$stateProvider.state('admin', {
+				url: '/admin',
+				templateUrl: 'views/home.html',
+				controller: 'MainCtrl'
+			})
+			.state('admin.index', {
+				url: '/index',
+				templateUrl: 'views/index.html',
+				controller: 'IndexCtrl'
+			})
+			.state('admin.user', {
+				url: '/user',
+				templateUrl: 'views/user.html',
+				controller: 'UserCtrl'
+			});
+		}).controller('MainCtrl', ['$scope', function ( $scope ) {
+			
+		}]).controller('IndexCtrl', ['$scope', function ( $scope ) {
+			$scope.index = {
+				name: 'angular',
+				date: '2014-01-01'
+			};
+		}]).controller('UserCtrl', ['$scope', function ( $scope ) {
+			$scope.user = {
+				name: 'gc',
+				age: 30
+			};
+		}]);
+	</script>
+</body>
+</html>
