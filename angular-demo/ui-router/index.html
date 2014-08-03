@@ -15,8 +15,13 @@
 	<script>
 		angular.module('demo', ['ui.router'])
 		.config(function ( $stateProvider, $urlRouterProvider ) {
-			$urlRouterProvider.when('', '/admin');
-			$stateProvider.state('admin', {
+			$urlRouterProvider.when('', '/login');
+			$stateProvider.state('login', {
+				url: '/login',
+				templateUrl: 'views/login.html',
+				controller: 'LoginCtrl'
+			})
+			.state('admin', {
 				url: '/admin',
 				templateUrl: 'views/home.html',
 				controller: 'MainCtrl'
@@ -33,10 +38,17 @@
 			});
 		}).controller('MainCtrl', ['$scope', function ( $scope ) {
 			
-		}]).controller('IndexCtrl', ['$scope', function ( $scope ) {
+		}]).controller('LoginCtrl', ['$scope', '$location', function ( $scope, $location ) {
+			$scope.login = function () {
+				$location.path('/admin')
+			};
+		}]).controller('IndexCtrl', ['$scope', '$state', function ( $scope, $state ) {
 			$scope.index = {
 				name: 'angular',
 				date: '2014-01-01'
+			};
+			$scope.goUser = function () {
+				$state.go('admin.user');
 			};
 		}]).controller('UserCtrl', ['$scope', function ( $scope ) {
 			$scope.user = {
