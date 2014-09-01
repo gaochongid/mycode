@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>margin collapsing</title>
+	<style>
+		.wrapper {
+			background-color: black;
+			margin-top: 100px;
+			margin-bottom: 100px;
+			/*padding: 1px;*/
+		}
+		.content1 {
+			background-color: red;
+			margin-top: 110px;
+		}
+		.content2 {
+			background-color: red;
+			margin-bottom: 110px;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<p class="content1">p1 p1 p1 p1 p1</p>
+		<p class="content2">p2 p2 p2 p2 p2</p>
+	</div>
+</body>
+</html>
