@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>page1</title>
+	<style>
+		.notifyjs-fy-metro-base {
+			position: relative;
+		    color:#444;
+		    display: inline-block;
+		}
+
+		.notifyjs-fy-metro-base .text {
+		    font-size: 12px;
+		    font-weight: normal;
+		    vertical-align: middle;
+		    display: inline-block;
+		    text-align: left;
+		    margin: 5px 5px;
+		    clear: both;
+		}
+	</style>
+
+	<script src="../lib/jquery-1.10.2.min.js"></script>
+	<script src="../lib/angular.min.js"></script>
+	<script src="../lib/jquery.validate.js"></script>
+	<script src="../lib/notify.js"></script>
+	<script src="../lib/notify-fy-metro.js"></script>
+	
+	<script>
+		var FY = {};
+		FY.INFOS = {};
+
+		FY.Common = angular.module('FY.Common', []);
+		angular.module('validation', ['FY.Common']).controller('MainCtrl', ['$scope', function( $scope ) {
+			$scope.validator = null;
+			$scope.doit = function () {
+				var s = $scope.validator.form();
+				console.log('controller, validation is: ', s);
+			};
+		}]);
+	</script>
+	<script src="fy.msg.js"></script>
+	<script src="fy.regexp.js"></script>
+	<script src="Ng.FormValidator.js"></script>
+</head>
+<body ng-app="validation">
+	<form id="validateForm" ng-controller="MainCtrl" fy-form>
+		username: <input type="text" name="username"
+						 minlength="1"
+						 maxlength="4"
+					     data-name="姓名"
+					     data-infos='["text"]' required="true"> <br>
+		num: <input type="number" name="num" data-name="采购数量" min="100" max="10000" data-infos='["number"]'> <br>
+
+		cellphone: <input type="number" name="cellphone" data-name="手机号" cellphone-rule="true" data-infos='["cell_phone"]' required> <br>
+		telphone: <input type="text" name="telphone" data-name="座机号" telphone-rule="true" data-infos='["tel_phone"]' required> <br>
+
+		<button type="submit" ng-click="doit();">submit!</button>
+	</form>
+</body>
+</html>
