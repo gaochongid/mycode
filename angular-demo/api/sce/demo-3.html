@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sce demo 2</title>
+</head>
+<body ng-app="sceDemo" ng-controller="MainCtrl">
+	<textarea ng-model="rawHtml"></textarea>
+	<div ng-bind-html="htmlBody"></div>
+	<script src="../../lib/angular-1.2.14.js"></script>
+	<script src="../../lib/angular-sanitize.js"></script>
+	<script>
+		angular.module('sceDemo', ['ngSanitize'])
+		.controller('MainCtrl', [
+			'$scope', '$sce',
+			function (scope, sce) {
+				scope.rawHtml = '<p style="color:red">ssss</p>';
+				scope.htmlBody = sce.trustAsHtml(scope.rawHtml);
+				/**
+				默认情况ng认为可变的插值都是不安全的
+				需要提供一个白名单，然后根据这个白名单进行过滤，
+				返回可信任的值，如果不在白名单内，则返回一个普通字符串。
+
+				getTrustedHtml实在sanitize中实现的
+				*/
+				console.log( sce.getTrustedHtml(scope.rawHtml) );
+
+				scope.$watch('rawHtml', function ( val ) {
+					if ( val ) {
+						// 直接认为这个字符串是安全的
+						scope.htmlBody = sce.trustAsHtml(scope.rawHtml);
+					}
+				});
+			}
+		]);
+	</script>
+</body>
+</html>

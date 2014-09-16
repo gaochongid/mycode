@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sce demo 2</title>
+</head>
+<body ng-app="sceDemo" ng-controller="MainCtrl">
+	<textarea ng-model="rawHtml"></textarea>
+	<div ng-bind-html="htmlBody"></div>
+	<script src="../../lib/angular-1.2.14.js"></script>
+	<script>
+		angular.module('sceDemo', [])
+		.controller('MainCtrl', [
+			'$scope', '$sce',
+			function (scope, sce) {
+				scope.rawHtml = '<p style="color:red">ssss</p>';
+				scope.htmlBody = sce.trustAsHtml(scope.rawHtml);
+				scope.$watch('rawHtml', function ( val ) {
+					if ( val ) {
+						scope.htmlBody = sce.trustAsHtml(scope.rawHtml);
+					}
+				});
+			}
+		]);
+	</script>
+</body>
+</html>

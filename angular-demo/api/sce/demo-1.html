@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>sce demo 1</title>
+</head>
+<body ng-app="sceDemo" ng-controller="MainCtrl">
+	<textarea ng-model="htmlBody"></textarea>
+	<div ng-bind-html="htmlBody"></div>
+	<script src="../../lib/angular-1.2.14.js"></script>
+	<script src="../../lib/angular-sanitize.js"></script>
+	<script>
+		angular.module('sceDemo', ['ngSanitize'])
+		.controller('MainCtrl', ['$scope', function (scope) {
+			// style att not parsed
+			scope.htmlBody = '<p style="color: red;">aaa</p>';
+		}]);
+	</script>
+</body>
+</html>
