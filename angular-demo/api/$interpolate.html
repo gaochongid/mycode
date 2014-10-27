@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>$interpolate</title>
+</head>
+<body ng-app="app" ng-controller="Main">
+	<input type="text" ng-model="to">
+	<textarea ng-model="emailBody"></textarea>
+
+	<script src="../lib/angular-1.2.14.js"></script>
+	<script>
+	var app = angular.module('app', []);
+	app.controller('Main', ['$scope', '$interpolate', '$sce', function ( $scope, $interpolate, $sce ) {
+		$scope.to = 'gaochongid163.com';
+		$scope.emailBody = 'Hello {{ to }}, name is tool';
+		$scope.aa = 'nnn'
+		$scope.$watch('emailBody', function ( newVal, oldVal, scope ) {
+			if ( newVal ) {
+				var template = $interpolate(newVal);
+				$scope.previewText = $sce.trustAsHtml( template({to: $scope.to}) );
+				console.log( $sce.parseAsHtml( 'previewText' )(scope) );
+			}
+		})
+	}]);
+	</script>
+
+	<div ng-bind-html="previewText"></div>
+</body>
+</html>

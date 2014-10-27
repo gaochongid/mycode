@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>$parse</title>
+</head>
+<body ng-app="app" ng-controller="Main">
+	<script src="../lib/angular-1.2.14.js"></script>
+	<script>
+	var app = angular.module('app', []);
+	app.controller('Main', ['$scope', '$parse', function ( $scope, $parse ) {
+		$scope.person = {
+			name: 'gc'
+		};
+		
+		$scope.$watch('expr', function ( newVal, oldVal, scope ) {
+			if ( newVal !== oldVal ) {
+				// 只能解析$scope上的表达式
+				// 或者angular可运行的表达式
+				var parseFun = $parse('person.name');
+				var parseFun = $parse('1+1');
+		
+				$scope.parseValue = parseFun(scope);
+			}
+		})
+	}]);
+	</script>
+
+	<input type="text" 
+		   ng-model="expr">
+	<h2>{{ parseValue }}</h2>
+</body>
+</html>

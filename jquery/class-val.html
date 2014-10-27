@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" class="demo"> <br>
+	<input type="text" class="demo"> <br>
+	<button>click</button>
+	<script src="lib/jquery-1.10.2.min.js"></script>
+	<script>
+		$('button').click(function () {
+			var arr = [];
+			$('.demo').each(function () {
+				arr.push($(this).val());
+			});
+			console.log(arr)
+		});
+	</script>
+</body>
+</html>

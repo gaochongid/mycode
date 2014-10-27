@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test service scope</title>
+</head>
+<body ng-app="service">
+	<div ng-controller="MainCtrl">
+		<p>{{ message }}</p>
+		
+		<div ng-controller="SubCtrl">
+			parent: <p>{{ message }}</p>
+			submsg: <p>{{ message }}</p>
+		</div>
+	</div>
+
+	<script src="../lib/angular-1.2.14.js"></script>
+	<script>
+		var app = angular.module('service', []);
+	</script>
+	<script src="service.js"></script>
+	<script src="MainCtrl.js"></script>
+	<script src="SubCtrl.js"></script>
+</body>
+</html>
