@@ -19,12 +19,13 @@
 			if ( newVal ) {
 				var template = $interpolate(newVal);
 				$scope.previewText = $sce.trustAsHtml( template({to: $scope.to}) );
-				console.log( $sce.parseAsHtml( 'previewText' )(scope) );
+				$scope.previewHtml = $sce.trustAsHtml($sce.parseAsHtml( 'previewText' )(scope));
 			}
 		})
 	}]);
 	</script>
 
 	<div ng-bind-html="previewText"></div>
+	<div ng-bind-html="previewHtml"></div>
 </body>
 </html>
